@@ -1,0 +1,104 @@
+{
+  "cv_protocol": {
+    "method": "StratifiedKFold",
+    "n_splits": 5,
+    "shuffle": true,
+    "random_state": 42,
+    "description": "sklearn.model_selection.cross_val_predict / cross_val_score refit a fresh RandomForest on each train fold and predict the held-out fold. No sample appears in both train and test within a fold."
+  },
+  "feature_extraction": {
+    "uses_labels": false,
+    "uses_test_fold": false,
+    "per_clip_only": true,
+    "dac_pretrained": "fixed public weights (not trained on this subset)",
+    "normalization": "none \u2014 raw handcrafted scalars fed to RF",
+    "global_statistics": "none computed across dataset before CV"
+  },
+  "classifier_training": {
+    "model": "RandomForestClassifier",
+    "normalization_in_pipeline": false,
+    "feature_selection_on_full_data": false
+  },
+  "speaker_leakage_stratified_kfold": {
+    "n_speakers": 20,
+    "speakers_in_multiple_folds": 20,
+    "speaker_overlap_across_folds": true,
+    "example_leaked_speakers": [
+      "LA_0079",
+      "LA_0080",
+      "LA_0081",
+      "LA_0082",
+      "LA_0083",
+      "LA_0084",
+      "LA_0085",
+      "LA_0086",
+      "LA_0087",
+      "LA_0088"
+    ]
+  },
+  "spoof_attack_coverage": {
+    "n_attack_types": 6,
+    "attack_types_per_fold": {
+      "0": {
+        "A06": 39,
+        "A05": 35,
+        "A02": 33,
+        "A01": 33,
+        "A03": 33,
+        "A04": 27
+      },
+      "1": {
+        "A02": 37,
+        "A06": 35,
+        "A01": 34,
+        "A03": 33,
+        "A05": 31,
+        "A04": 30
+      },
+      "2": {
+        "A05": 41,
+        "A02": 39,
+        "A01": 33,
+        "A03": 31,
+        "A06": 29,
+        "A04": 27
+      },
+      "3": {
+        "A03": 43,
+        "A04": 40,
+        "A01": 39,
+        "A06": 32,
+        "A02": 26,
+        "A05": 20
+      },
+      "4": {
+        "A03": 36,
+        "A01": 36,
+        "A06": 33,
+        "A04": 33,
+        "A02": 33,
+        "A05": 29
+      }
+    },
+    "each_attack_in_multiple_folds": {
+      "A01": 5,
+      "A02": 5,
+      "A03": 5,
+      "A04": 5,
+      "A05": 5,
+      "A06": 5
+    }
+  },
+  "overlap_with_400_clip_sample": {
+    "n_current": 2000,
+    "n_prior": 400,
+    "n_overlap": 0,
+    "pct_current_in_prior": 0.0
+  },
+  "duplicate_paths_in_sample": 0,
+  "risks": [
+    "Speaker leakage: StratifiedKFold splits by clip label, not speaker. The same speaker can appear in train and test folds. This can inflate scores vs speaker-disjoint evaluation.",
+    "Attack-type leakage: All spoof attack families (A01\u2013A19) appear in every fold because folds are stratified by bonafide/spoof only. The classifier may learn attack-specific codec artifacts rather than general spoof cues.",
+    "Subset overlap: If the 2k sample uses the same random_state=42 as the 400 sample, the 400 clips are a subset of the 2k; metrics are not independent across experiments."
+  ]
+}

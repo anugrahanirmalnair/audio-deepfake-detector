@@ -1,0 +1,17 @@
+{
+  "baseline_dataset": "asvspoof_400",
+  "current_dataset": "asvspoof_2k",
+  "roc_auc_delta": 0.05161099999999996,
+  "eer_delta": -0.023499999999999993,
+  "accuracy_delta": 0.020000000000000018,
+  "baseline": {
+    "roc_auc": 0.8453625,
+    "eer": 0.21499999999999997,
+    "accuracy_mean": 0.795
+  },
+  "current": {
+    "roc_auc": 0.8969735,
+    "eer": 0.19149999999999998,
+    "accuracy_mean": 0.8150000000000001
+  }
+}

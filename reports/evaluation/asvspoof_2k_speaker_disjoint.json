@@ -1,0 +1,10 @@
+{
+  "method": "GroupKFold",
+  "n_splits": 5,
+  "split_by": "speaker_id",
+  "n_speakers": 20,
+  "accuracy_mean": 0.7733933792803533,
+  "roc_auc": 0.861826,
+  "eer": 0.22749999999999998,
+  "note": "No speaker appears in both train and test within a fold."
+}

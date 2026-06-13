@@ -1,0 +1,48 @@
+{
+  "dataset": "asvspoof_2k",
+  "n_samples": 2000,
+  "n_features": 295,
+  "config": "8_brief_full_windowed",
+  "cv_folds": 5,
+  "cv_random_state": 42,
+  "class_names": [
+    "bonafide",
+    "spoof"
+  ],
+  "accuracy_mean": 0.8150000000000001,
+  "accuracy_std": 0.013693063937629145,
+  "accuracy_per_fold": [
+    0.81,
+    0.795,
+    0.815,
+    0.8175,
+    0.8375
+  ],
+  "roc_auc": 0.8969735,
+  "eer": 0.19149999999999998,
+  "confusion_matrix": [
+    [
+      875,
+      125
+    ],
+    [
+      245,
+      755
+    ]
+  ],
+  "confusion_matrix_labels": {
+    "rows_true": [
+      "bonafide",
+      "spoof"
+    ],
+    "cols_pred": [
+      "bonafide",
+      "spoof"
+    ],
+    "tn": 875,
+    "fp": 125,
+    "fn": 245,
+    "tp": 755
+  },
+  "spoof_as_positive_class_index": 1
+}

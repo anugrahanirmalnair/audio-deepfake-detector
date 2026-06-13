@@ -1,0 +1,99 @@
+{
+  "thresholds": {
+    "min_roc_auc": 0.72,
+    "max_eer": 0.28
+  },
+  "results": [
+    {
+      "name": "1_baseline_global_tokens",
+      "n_features": 2,
+      "accuracy_mean": 0.6675000000000001,
+      "accuracy_std": 0.050373604199024716,
+      "roc_auc": 0.711175,
+      "eer": 0.3375,
+      "passed": false
+    },
+    {
+      "name": "2_token_codec_enriched",
+      "n_features": 162,
+      "accuracy_mean": 0.6900000000000001,
+      "accuracy_std": 0.03297726489568229,
+      "roc_auc": 0.7497624999999999,
+      "eer": 0.3275,
+      "passed": false
+    },
+    {
+      "name": "3_token_full_histogram",
+      "n_features": 258,
+      "accuracy_mean": 0.69,
+      "accuracy_std": 0.021505813167606556,
+      "roc_auc": 0.7669499999999998,
+      "eer": 0.31500000000000006,
+      "passed": false
+    },
+    {
+      "name": "4_reconstruction_only",
+      "n_features": 14,
+      "accuracy_mean": 0.6950000000000001,
+      "accuracy_std": 0.031224989991992008,
+      "roc_auc": 0.7662125,
+      "eer": 0.30500000000000005,
+      "passed": false
+    },
+    {
+      "name": "5_latent_only",
+      "n_features": 14,
+      "accuracy_mean": 0.6625,
+      "accuracy_std": 0.034460121880225555,
+      "roc_auc": 0.726575,
+      "eer": 0.33499999999999996,
+      "passed": false
+    },
+    {
+      "name": "6_dual_stream",
+      "n_features": 190,
+      "accuracy_mean": 0.765,
+      "accuracy_std": 0.04213074886588179,
+      "roc_auc": 0.8347,
+      "eer": 0.235,
+      "passed": true
+    },
+    {
+      "name": "7_dual_stream_full",
+      "n_features": 286,
+      "accuracy_mean": 0.7699999999999999,
+      "accuracy_std": 0.03409545424246465,
+      "roc_auc": 0.8334625,
+      "eer": 0.2425,
+      "passed": true
+    },
+    {
+      "name": "8_brief_full_windowed",
+      "n_features": 295,
+      "accuracy_mean": 0.79,
+      "accuracy_std": 0.028939592256975545,
+      "roc_auc": 0.8461999999999998,
+      "eer": 0.22499999999999998,
+      "passed": true
+    },
+    {
+      "name": "9_windowed_only",
+      "n_features": 9,
+      "accuracy_mean": 0.73,
+      "accuracy_std": 0.030207614933986434,
+      "roc_auc": 0.7859875000000002,
+      "eer": 0.2925,
+      "passed": false
+    }
+  ],
+  "best": {
+    "name": "8_brief_full_windowed",
+    "n_features": 295,
+    "accuracy_mean": 0.79,
+    "accuracy_std": 0.028939592256975545,
+    "roc_auc": 0.8461999999999998,
+    "eer": 0.22499999999999998,
+    "passed": true
+  },
+  "hypothesis_supported": true
+}
