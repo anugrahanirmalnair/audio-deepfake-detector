@@ -1,0 +1,11 @@
+venv/
+.venv/
+__pycache__/
+node_modules/
+.env
+*.flac
+*.wav
+*.mp3
+data/
+frontend/
+.git/docker 
