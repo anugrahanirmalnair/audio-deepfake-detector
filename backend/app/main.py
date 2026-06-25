@@ -77,8 +77,6 @@ async def lifespan(app: FastAPI):
         raise RuntimeError("label_encoder must include 'spoof' class")
     state.spoof_index = int(classes.index("spoof"))
 
-    print("Loading DAC model (startup)...")
-    state.dac_model = load_dac_model()
     print(
         f"Ready: RF ({RF_PATH.name}), {len(state.feature_cols)} features, "
         f"classes={classes}"
@@ -97,15 +95,18 @@ app = FastAPI(
 
 @app.get("/health", response_model=HealthResponse)
 def health():
-    if state.classifier is None or state.dac_model is None:
+    if state.classifier is None:
         raise HTTPException(status_code=503, detail="Models not loaded")
     return HealthResponse(status="ok")
 
 
 @app.post("/analyze", response_model=AnalyzeResponse)
 async def analyze(audio: UploadFile = File(...)):
-    if state.classifier is None or state.dac_model is None:
+    if state.classifier is None:
         raise HTTPException(status_code=503, detail="Models not loaded")
+    if state.dac_model is None:
+        print("Loading DAC model...")
+        state.dac_model = load_dac_model()
 
     suffix = Path(audio.filename or "upload.wav").suffix.lower()
     if suffix not in ALLOWED_EXTENSIONS:
