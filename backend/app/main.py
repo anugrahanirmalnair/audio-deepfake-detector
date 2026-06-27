@@ -1,5 +1,4 @@
 """FastAPI backend for codec-based deepfake detection."""
-
 from __future__ import annotations
 
 import pickle
@@ -11,6 +10,7 @@ from pathlib import Path
 import numpy as np
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 
 # Repo root (parent of backend/)
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -90,6 +90,15 @@ app = FastAPI(
     title="Codec Deepfake Detector",
     version="1.0.0",
     lifespan=lifespan,
+)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",  # local React
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 

@@ -12,6 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY backend/ ./backend/
 COPY src/ ./src/
 COPY models/ ./models/
+COPY weights/ ./weights/
 
 EXPOSE 8000
 

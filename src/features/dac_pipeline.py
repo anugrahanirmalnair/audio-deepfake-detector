@@ -5,16 +5,16 @@ from __future__ import annotations
 import librosa
 import numpy as np
 import torch
+from pathlib import Path
 
+from pathlib import Path
 
 def load_dac_model():
     import dac
 
-    return dac.utils.load_model(
-        model_type="24khz",
-        model_bitrate="8kbps",
-    )
+    weights_path = Path("/app/weights/weights_24khz_8kbps_0.0.4.pth")
 
+    return dac.utils.load_model(load_path=str(weights_path))
 
 def load_audio_for_dac(audio_path: str, sample_rate: int) -> torch.Tensor:
     """Return float tensor [1, 1, T] at DAC sample rate."""

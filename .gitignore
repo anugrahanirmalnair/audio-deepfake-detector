@@ -19,3 +19,4 @@ node_modules/
 frontend/dist/
 *.pyc
 reports/evaluation/*.pngx
+weights/

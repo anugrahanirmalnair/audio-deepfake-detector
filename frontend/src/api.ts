@@ -1,5 +1,7 @@
 import type { AnalyzeResponse } from "./types";
-
+const API_URL =
+  import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+  
 export async function analyzeAudio(file: File): Promise<AnalyzeResponse> {
   const form = new FormData();
   form.append("audio", file);

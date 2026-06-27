@@ -8,4 +8,4 @@ node_modules/
 *.mp3
 data/
 frontend/
-.git/docker 
+.git/
