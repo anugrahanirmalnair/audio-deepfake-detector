@@ -193,47 +193,43 @@ Both services are independently containerized and deployed on **Azure Container 
 
 ## Repository Structure
 
-audio-deepfake-detector/
 
-│
+```
+audio-deepfake-detector/
 ├── backend/
 │   ├── app/
-│   │   └── main.py                  # FastAPI inference service
+│   │   └── main.py                       # FastAPI inference service
 │   └── Dockerfile
-│
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── WaveformHeatmap.tsx  # Canvas waveform + heatmap overlay
-│   │   │   └── ResultsPanel.tsx     # Verdict + scores display
-│   │   ├── api.ts                   # Backend API client
-│   │   └── types.ts                 # Shared TypeScript types
+│   │   │   ├── WaveformHeatmap.tsx        # Canvas waveform + heatmap overlay
+│   │   │   └── ResultsPanel.tsx           # Verdict + scores display
+│   │   ├── api.ts                         # Backend API client
+│   │   └── types.ts                       # Shared TypeScript types
 │   └── Dockerfile
-│
 ├── src/
 │   ├── features/
-│   │   ├── dac_pipeline.py          # DAC encode/decode interface
-│   │   ├── dac_recon_features.py    # Stream 1: reconstruction error
-│   │   ├── dac_token_features.py    # Stream 2: codebook statistics
-│   │   ├── dac_window_features.py   # 500ms windowed aggregation
-│   │   └── extract_hypothesis_features.py  # Feature orchestrator
+│   │   ├── dac_pipeline.py                # DAC encode/decode interface
+│   │   ├── dac_recon_features.py          # Stream 1: reconstruction error
+│   │   ├── dac_token_features.py          # Stream 2: codebook statistics
+│   │   ├── dac_window_features.py         # 500ms windowed aggregation
+│   │   └── extract_hypothesis_features.py # Feature orchestrator
 │   ├── models/
-│   │   └── train_final_models.py    # RF + MLP training pipeline
+│   │   └── train_final_models.py          # RF + MLP training pipeline
 │   └── validation/
-│       ├── hypothesis_validation.py # Ablation study
-│       ├── leakage_audit.py         # Speaker-disjoint evaluation
+│       ├── hypothesis_validation.py        # Ablation study
+│       ├── leakage_audit.py               # Speaker-disjoint evaluation
 │       └── evaluate_winning_pipeline.py
-│
 ├── models/
-│   ├── deepfake_detector_rf.pkl     # Trained Random Forest
-│   └── feature_cols.pkl             # Feature column order
-│
+│   ├── deepfake_detector_rf.pkl           # Trained Random Forest
+│   └── feature_cols.pkl                   # Feature column order
 ├── reports/
-│   └── evaluation/                  # ROC curves, confusion matrices
-│
+│   └── evaluation/                        # ROC curves, confusion matrices
 ├── HYPOTHESIS_VALIDATION.md
 ├── LEAKAGE_AUDIT.md
 └── README.md
+```
 
 ---
 
